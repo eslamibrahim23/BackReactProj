@@ -10,7 +10,9 @@ app.use(express.json());
 const authRoute = require("./Routes/authRoute");
 app.use("/users", authRoute);
 app.use(express.json());
+const cors = require("cors");
 
+app.use(cors());
 const User = require("./models/userSchema");
 app.get("/user", async (req, res) => {
   try {
@@ -22,6 +24,13 @@ app.get("/user", async (req, res) => {
       message: "Internal Server Error",
     });
   }
+});
+
+//cors to can access atals database link
+app.get("/test", (req, res) => {
+  res.json({
+    message: "Hello",
+  });
 });
 
 connect();
