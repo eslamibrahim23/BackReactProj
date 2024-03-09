@@ -36,7 +36,6 @@ const validationSchema = Joi.object({
   }),
   password: JoiPassword.string()
     .min(6)
-    .max(20)
     .minOfNumeric(1)
     .required(),
   createdAt: Joi.date(),
