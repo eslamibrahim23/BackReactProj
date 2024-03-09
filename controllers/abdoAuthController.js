@@ -22,7 +22,7 @@ const signupabdo = async (req, res, next) => {
     return res.status(201).json(user);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Internal Server Error" });
+    res.status(500).json({ message: error });
   }
 };
 
@@ -51,7 +51,7 @@ const loginabdo = async (req, res, next) => {
    return res.json({token});
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Internal Server Error" });
+    res.status(500).json({ message: error });
   }
 };
 
