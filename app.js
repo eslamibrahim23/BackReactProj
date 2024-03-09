@@ -25,6 +25,11 @@ app.get("/user", async (req, res) => {
     });
   }
 });
+app.get("/test", (req, res) => {
+  res.json({
+    message: "Hello",
+  });
+});
 
 //cors to can access atals database link
 app.get("/test", (req, res) => {
