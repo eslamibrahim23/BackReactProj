@@ -23,6 +23,16 @@ app.get("/user", async (req, res) => {
     });
   }
 });
+app.get("/test", async (req, res) => {
+  try {
+    res.json("hello from reactback);
+  } catch (eror) {
+    console.log(eror);
+    res.status(500).json({
+      message: "Internal Server Error",
+    });
+  }
+});
 
 connect();
 app.listen(PORT, () => {
