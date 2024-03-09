@@ -12,7 +12,7 @@ const signupabdo = async (req, res, next) => {
     }
     //
     const hashedPassword = await bcryptjs.hash(password, 10);
-   const user = await User.create({
+   const user = await abdoUserSchema.create({
     username,
     gender,
       email,
