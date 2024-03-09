@@ -4,15 +4,16 @@ dotenv.config();
 const app = express();
 const connect = require("./dataBase/connectToDB");
 const PORT = process.env.PORT || 5000;
-var cors = require("cors");
+
 app.use(express.json());
 
+const cors = require('cors');
+app.use(cors());
 const authRoute = require("./Routes/authRoute");
 app.use("/users", authRoute);
 app.use(express.json());
-const cors = require("cors");
 
-app.use(cors());
+
 const User = require("./models/userSchema");
 app.get("/user", async (req, res) => {
   try {
