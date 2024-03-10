@@ -21,22 +21,19 @@ const signup = async (req, res, next) => {
 
     return res.status(201).json({ status: "success" });
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: "Internal Server Error" });
+    // console.log(error);
+    res.status(500).json({ message: "samaaaaaaaaaaa7",error });
   }
 };
 
 const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    const visitor= await User.findOne({email})
-    if(!visitor)
-    return res.status(400).json({ message: "please signup first" })
+    const visitor = await User.findOne({ email });
+    if (!visitor)
+      return res.status(400).json({ message: "please signup first" });
 
-    const comparePassowrd = await bcryptjs.compare(
-      password,
-      visitor.password
-    );
+    const comparePassowrd = await bcryptjs.compare(password, visitor.password);
     if (!comparePassowrd)
       return res.status(400).json({ message: "wrong Password" });
     const token = jwt.sign(
@@ -48,7 +45,7 @@ const login = async (req, res, next) => {
       },
       process.env.PRIVATE_KEY_TOKEN
     );
-   return res.json({token});
+    return res.json({ token });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Internal Server Error" });
