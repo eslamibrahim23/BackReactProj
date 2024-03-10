@@ -10,7 +10,9 @@ app.use(express.json());
 const cors = require('cors');
 app.use(cors());
 const authRoute = require("./Routes/authRoute");
+const abdoAuthRoute = require("./Routes/abdoAuthRoute")
 app.use("/users", authRoute);
+app.use("/usersabdo",abdoAuthRoute)
 app.use(express.json());
 
 
