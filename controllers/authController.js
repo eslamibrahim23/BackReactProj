@@ -17,6 +17,7 @@ const signup = async (req, res, next) => {
       lastname,
       email,
       password: hashedPassword,
+      userImage:"https://xsgames.co/randomusers/assets/avatars/male/5.jpg"
     });
 
     return res.status(201).json({ status: "success" });
