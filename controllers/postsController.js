@@ -59,6 +59,7 @@ const deletePost = async (req, res, next) => {
   }
 };
 
+console.log("yyyyyyyarb")
 const updatePost = async (req, res, next) => {
   try {
     const id = req.params.id;
