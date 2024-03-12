@@ -32,7 +32,7 @@ const getPostById = async (req, res, next) => {
   try {
     const id = req.params.id;
     console.log(id);
-    const findById = await Post.findById(id)
+    const findById = await Post.findById(id);
     res.json({ findById });
     console.log(findById);
   } catch (error) {
@@ -45,15 +45,12 @@ const getPostById = async (req, res, next) => {
     );
     next();
   }
-
- 
 };
 const deletePost = async (req, res, next) => {
   try {
     const id = req.params.id;
     const deleteUser = await Post.findByIdAndDelete(id);
-    return res.json({deleteUser, message: "story Deleted successfully!" });
-
+    return res.json({ deleteUser, message: "story Deleted successfully!" });
   } catch (error) {
     res.json({
       statud: "Story Not found go to Create page",
@@ -62,12 +59,25 @@ const deletePost = async (req, res, next) => {
   }
 };
 
+const updatePost = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const updated = await Story.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
+    return res.send({ updated, message: "story Updated successfully!" });
+  } catch (error) {
+    res.json({
+      statud: "Story Not found go to Create page",
+    });
+    next();
+  }
+};
 
-
-
-
-
-
-
-
-module.exports = { createPost, getallPost, getPostById, deletePost };
+module.exports = {
+  createPost,
+  getallPost,
+  getPostById,
+  deletePost,
+  updatePost,
+};
