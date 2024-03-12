@@ -4,12 +4,13 @@ const jwt = require("jsonwebtoken");
 
 const createPost = async (req, res, next) => {
   try {
-    const { title, body, image } = req.body;
+    const { title, body, image,createdBy } = req.body;
 
     await Post.create({
       title,
       body,
       image,
+      createdBy
     });
     return res.status(201).json({ status: "success" });
   } catch (error) {
