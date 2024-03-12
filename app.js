@@ -5,16 +5,19 @@ const app = express();
 const connect = require("./dataBase/connectToDB");
 const PORT = process.env.PORT || 5000;
 
+const multer = require("multer");
+
 app.use(express.json());
 
-const cors = require('cors');
+const cors = require("cors");
 app.use(cors());
 const authRoute = require("./Routes/authRoute");
-const abdoAuthRoute = require("./Routes/abdoAuthRoute")
-app.use("/users", authRoute);
-app.use("/usersabdo",abdoAuthRoute)
-app.use(express.json());
+const postRoute = require("./Routes/postsRoute");
 
+app.use("/users", authRoute);
+app.use("/posts", postRoute);
+
+app.use(express.json());
 
 const User = require("./models/userSchema");
 app.get("/user", async (req, res) => {
@@ -33,6 +36,7 @@ app.get("/test", (req, res) => {
     message: "Hello",
   });
 });
+
 
 //cors to can access atals database link
 app.get("/test", (req, res) => {
