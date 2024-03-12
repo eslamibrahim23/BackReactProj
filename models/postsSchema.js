@@ -18,8 +18,8 @@ const postSchema = new mongoose.Schema(
       required: true,
     },
     createdBy: {
-      type: mongoose.Types.ObjectId,
-      ref: "user",
+      type: Object,
+      // ref: "user",
       required: true,
     },
     // createdBy: {
