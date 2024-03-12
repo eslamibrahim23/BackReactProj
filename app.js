@@ -14,7 +14,11 @@ app.use(cors());
 const authRoute = require("./Routes/authRoute");
 const postRoute = require("./Routes/postsRoute");
 
+// const { verifyToken } = require("./middleware/auth");
+
+// app.use("/postsbyid", verifyToken, postRoute);
 app.use("/users", authRoute);
+// app.use("/posts", verifyToken, postRoute);
 app.use("/posts", postRoute);
 
 app.use(express.json());
@@ -36,7 +40,6 @@ app.get("/test", (req, res) => {
     message: "Hello",
   });
 });
-
 
 //cors to can access atals database link
 app.get("/test", (req, res) => {

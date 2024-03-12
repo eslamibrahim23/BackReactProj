@@ -27,4 +27,26 @@ const getallPost = async (req, res, next) => {
   }
 };
 
-module.exports = { createPost ,getallPost};
+const getPostById = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    console.log(id);
+
+    const findById = await Post.findById(id).populate("createdBy");
+    res.json({ findById });
+    console.log(findById);
+  } catch (error) {
+    return (
+      console.log(error),
+      res.json({
+        error: console.log(error),
+        statud: "Story Not found go to Create page",
+      })
+    );
+    next();
+  }
+};
+
+
+
+module.exports = { createPost ,getallPost,getPostById};
