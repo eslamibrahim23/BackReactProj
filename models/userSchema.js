@@ -26,7 +26,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    
   },
   { timestamps: true }
 );
@@ -46,6 +45,7 @@ const validationSchema = Joi.object({
     .minOfUppercase(1)
     .minOfNumeric(1)
     .required(),
+  userImage: Joi.string(),
   createdAt: Joi.date(),
   updatedAt: Joi.date(),
 });
