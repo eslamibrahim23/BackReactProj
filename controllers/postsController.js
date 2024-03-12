@@ -32,8 +32,7 @@ const getPostById = async (req, res, next) => {
   try {
     const id = req.params.id;
     console.log(id);
-
-    const findById = await Post.findById(id).populate("createdBy");
+    const findById = await Post.findById(id)
     res.json({ findById });
     console.log(findById);
   } catch (error) {
@@ -41,7 +40,7 @@ const getPostById = async (req, res, next) => {
       console.log(error),
       res.json({
         error: console.log(error),
-        statud: "Story Not found go to Create page",
+        statud: "psot Not found go to Create page",
       })
     );
     next();
@@ -53,7 +52,8 @@ const deletePost = async (req, res, next) => {
   try {
     const id = req.params.id;
     const deleteUser = await Post.findByIdAndDelete(id);
-    return res.json({ message: "story Deleted successfully!" });
+    return res.json({deleteUser, message: "story Deleted successfully!" });
+
   } catch (error) {
     res.json({
       statud: "Story Not found go to Create page",
@@ -61,5 +61,13 @@ const deletePost = async (req, res, next) => {
     next();
   }
 };
+
+
+
+
+
+
+
+
 
 module.exports = { createPost, getallPost, getPostById, deletePost };
